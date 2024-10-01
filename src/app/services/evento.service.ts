@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Evento } from '../models/Evento';
 
-@Injectable()
+@Injectable( )
 export class EventoService {
   baseURL = 'https://localhost:7089/Eventos';
 

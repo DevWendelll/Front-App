@@ -5,13 +5,7 @@
     <label class="visually-hidden" for="searchInput">Buscar</label>
     <div class="input-group">
       <label class="me-3">Filtro:</label>
-      <input 
-        type="text" 
-        class="form-control"
-        placeholder="Buscar" 
-        [(ngModel)]="filtroLista"
-        [ngModelOptions]="{standalone: true}" 
-      />
+      <input type="text" class="form-control" placeholder="Buscar" [(ngModel)]="filtroLista" [ngModelOptions]="{standalone: true}" appFocus />
     </div>
   </div>
 </form>
@@ -57,7 +51,7 @@
         <button type="button" class="btn btn-primary btn-sm me-2" tooltip="Editar">
           <i class="fa fa-edit"></i>
         </button>
-        <button type="button" class="btn btn-danger btn-sm" tooltip="Excluir" (click)="openModal(template)">
+        <button type="button" class="btn btn-danger btn-sm" (click)="openModal(template)" tooltip="Excluir">
           <i class="fa fa-trash"></i>
         </button>
       </td>
@@ -76,9 +70,10 @@
 
 <!--Preciso realizar a tarefa da seção 7 Modal e Toast-->
 
- <ng-template #template>
+<ng-template #template>
   <div class="modal-body text-center">
-    <p>Tem certeza que quer deletar este evento?</p>
+    <p>Tem certeza que deseja deletar este evento?</p>
+    <input type="text" appFocus placeholder="Digite algo aqui..." />
     <button type="button" class="btn btn-default" (click)="confirm()">Sim</button>
     <button type="button" class="btn btn-primary" (click)="decline()">Não</button>
   </div>

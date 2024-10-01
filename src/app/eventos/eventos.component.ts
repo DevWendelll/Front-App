@@ -6,10 +6,10 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 @Component({
   selector: 'app-eventos',
   templateUrl: './eventos.component.html',
-  styleUrls: ['./eventos.component.css']
+  styleUrls: ['./eventos.component.scss'],
 })
 export class EventosComponent implements OnInit {
-  modalRef = {} as BsModalRef;
+  modalRef?: BsModalRef;
   public eventos: Evento[] = [];
   public eventosFiltrados: Evento[] = [];
 
@@ -64,16 +64,16 @@ export class EventosComponent implements OnInit {
     });
 
   }
-  openModal(template: TemplateRef<any>):void{
-     this.modalRef = this.modalService.show(template, { class: 'modal-sm' });
-     }
+   openModal(template: TemplateRef<void>) {
+      this.modalRef = this.modalService.show(template, { class: 'modal-sm' });
+      }
      
-    confirm(): void {
-       this.modalRef.hide();
-     }
-     
-        decline(): void {
-          this.modalRef.hide();
-     } 
+      public confirm(): void {
+        this.modalRef!.hide();  // Afirma que modalRef não é null
+      }
+      
+      public decline(): void {
+        this.modalRef!.hide();
+      }
 
 }
