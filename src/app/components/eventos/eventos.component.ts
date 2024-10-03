@@ -1,7 +1,8 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
-import { EventoService } from '../services/evento.service';
-import { Evento } from '../models/Evento';
+import { EventoService } from '../../services/evento.service';
+import { Evento } from '../../models/Evento';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-eventos',
@@ -9,7 +10,14 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
   styleUrls: ['./eventos.component.scss'],
 })
 export class EventosComponent implements OnInit {
-  modalRef?: BsModalRef;
+  // modalRef?: BsModalRef;
+
+  public ngOnInit() {
+    this.spinner.show();
+    this.getEventos();
+ 
+  }
+
   public eventos: Evento[] = [];
   public eventosFiltrados: Evento[] = [];
 
@@ -41,12 +49,10 @@ export class EventosComponent implements OnInit {
 
   constructor( 
    private eventoService: EventoService, 
-   private modalService: BsModalService
+   private spinner: NgxSpinnerService,
+  //  private modalService: BsModalService
   ) {}
 
-  public ngOnInit(): void {
-    this.getEventos();
-  }
 
  
   public alterarImagem(): void{
@@ -60,20 +66,23 @@ export class EventosComponent implements OnInit {
         this.eventos = _eventos;
         this.eventosFiltrados = this.eventos;
       },
-      error: error => console.log(error)
+      error: (error: any) => {
+        this.spinner.hide();
+      },
+      complete: () => this.spinner.hide()
     });
 
   }
-   openModal(template: TemplateRef<void>) {
-      this.modalRef = this.modalService.show(template, { class: 'modal-sm' });
-      }
+  //  openModal(template: TemplateRef<void>) {
+  //     this.modalRef = this.modalService.show(template, { class: 'modal-sm' });
+  //     }
      
-      public confirm(): void {
-        this.modalRef!.hide();  // Afirma que modalRef não é null
-      }
+  //     public confirm(): void {
+  //       this.modalRef!.hide();  // Afirma que modalRef não é null
+  //     }
       
-      public decline(): void {
-        this.modalRef!.hide();
-      }
+  //     public decline(): void {
+  //       this.modalRef!.hide();
+  //     }
 
 }

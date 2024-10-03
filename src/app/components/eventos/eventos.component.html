@@ -1,5 +1,4 @@
-<h2>Eventos</h2>
-<hr>
+<app-titulo [titulo]= "'Evento'" ></app-titulo>
 <form class="row row-cols-lg-auto g-3 align-items-center" action="">
   <div>
     <label class="visually-hidden" for="searchInput">Buscar</label>
@@ -51,7 +50,7 @@
         <button type="button" class="btn btn-primary btn-sm me-2" tooltip="Editar">
           <i class="fa fa-edit"></i>
         </button>
-        <button type="button" class="btn btn-danger btn-sm" (click)="openModal(template)" tooltip="Excluir">
+        <button type="button" class="btn btn-danger btn-sm" tooltip="Excluir">
           <i class="fa fa-trash"></i>
         </button>
       </td>
@@ -69,7 +68,7 @@
 
 
 <!--Preciso realizar a tarefa da seção 7 Modal e Toast-->
-
+<!-- 
 <ng-template #template>
   <div class="modal-body text-center">
     <p>Tem certeza que deseja deletar este evento?</p>
@@ -77,4 +76,4 @@
     <button type="button" class="btn btn-default" (click)="confirm()">Sim</button>
     <button type="button" class="btn btn-primary" (click)="decline()">Não</button>
   </div>
-</ng-template>
+</ng-template> -->

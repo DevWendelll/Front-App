@@ -1,7 +1,13 @@
 <app-nav></app-nav>
 
 <div class="container">
-    <app-eventos></app-eventos>
-
     <router-outlet></router-outlet>
 </div>
+
+<ngx-spinner>
+    <div class="d-flex justify-content-center">
+      <div class="spinner-grow text-light" style="width: 3rem; height: 3rem;" role="status">
+      </div>
+    </div>
+    <p style="color: white" > Carregando... </p>
+  </ngx-spinner>
